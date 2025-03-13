@@ -8,8 +8,7 @@ def generate_points(lower_bound, upper_bound, n):
     return points
 
 def line(x):
-    y = 3 * x + 2
-    return y
+    return 3 * x + 2
 
 def assign_class(x, y):
     if y > line(x):
@@ -17,7 +16,7 @@ def assign_class(x, y):
     else:
         return -1
 
-def train_perceptron(points, learning_rate=0.01, epochs=100):
+def train_perceptron(points, learning_rate=0.01, epochs=50):
     #nahodne vahy a bias na zacatek
     w = np.random.uniform(-1, 1, size=2)
     b = np.random.uniform(-1, 1)
