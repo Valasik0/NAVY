@@ -1,4 +1,3 @@
-from tkinter import messagebox
 import tkinter as tk
 from initial_patterns import initial_patterns
 from hopfield_network import HopfieldNetwork
