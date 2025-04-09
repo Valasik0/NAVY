@@ -57,7 +57,7 @@ class GUI:
         self.nesting_num = tk.Text(self.frame_start_controls, height=1, width=10)
         self.nesting_num.pack(pady=(0, 20))
 
-        tk.Label(self.frame_start_controls, text="Line lenght:").pack(pady=5)
+        tk.Label(self.frame_start_controls, text="Line lenght (px):").pack(pady=5)
         self.line_length = tk.Text(self.frame_start_controls, height=1, width=10)
         self.line_length.pack(pady=(0, 20))
 
@@ -103,3 +103,5 @@ class GUI:
     def canvas_component(self):
         self.canvas = tk.Canvas(self.frame_left, width=600, height=600, bg="white")
         self.canvas.pack(pady=5)
+
+        self.canvas.create_line(100, 100, 200, 200, fill="black", width=1)
