@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from lsystemsController import LSystemsController
 
 class GUI:
     def __init__(self):
@@ -22,6 +23,7 @@ class GUI:
         self.ib_axiom = None
         self.ib_rule = None
         self.ib_custome_angle = None
+        self.controller = LSystemsController()
     
     def run(self):
         self.frame_left = tk.Frame(self.root)
@@ -92,10 +94,14 @@ class GUI:
         self.ib_custome_angle = tk.Text(self.frame_custom, height=1, width=10)
         self.ib_custome_angle.pack(pady=(0, 20))
 
-        self.btn_draw_custom = tk.Button(self.frame_custom, text="Draw custom", bg="lightgreen")
+        self.btn_draw_custom = tk.Button(self.frame_custom, text="Draw custom", bg="lightgreen", 
+                                         command=lambda: self.controller.draw_custom(self.ib_axiom.get("1.0", tk.END).strip(), 
+                                                                                     self.ib_rule.get("1.0", tk.END).strip(), 
+                                                                                     self.ib_custome_angle.get("1.0", tk.END).strip(),
+                                                                                     self.canvas))
         self.btn_draw_custom.pack(pady=5, fill=tk.X)
 
-        self.btn_clear = tk.Button(self.frame_custom, text="Clear grid", bg="pink")
+        self.btn_clear = tk.Button(self.frame_custom, text="Clear grid", bg="pink", command=lambda: self.controller.clear_canvas(self.canvas))
         self.btn_clear.pack(pady=5, fill=tk.X)
 
 

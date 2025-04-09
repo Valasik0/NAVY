@@ -1,4 +1,4 @@
-from lsystemsController import *
+from gui import *
 
-controller = LSystemsController()
-controller.run()
+my_GUI = GUI()
+my_GUI.run()

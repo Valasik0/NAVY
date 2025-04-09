@@ -3,4 +3,15 @@ class LSystem:
         self.axiom = axiom
         self.rules = rules
         self.angle = angle
-        self.current_string = axiom
+
+    def generate(self, iterations: int) -> str:
+        result = self.axiom
+        for _ in range(iterations):
+            new_result = ""
+            for char in result:
+                if char in self.rules:
+                    new_result += self.rules[char]
+                else:
+                    new_result += char
+            result = new_result
+        return result
