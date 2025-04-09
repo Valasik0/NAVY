@@ -9,16 +9,14 @@ class LSystemsController:
     def clear_canvas(self, canvas):
         canvas.delete("all")
 
-    def parse_rule(self, rule_text: str) -> dict:
-        rules = {}
-        
-        #pokud pravidlo obsahuje vice axiomu, rozdelime je
-        if '->' in rule_text:
+    def parse_rule(self, rule_text):
+        if isinstance(rule_text, str) and '->' in rule_text:
             parts = rule_text.split('->')
             if len(parts) == 2:
-                rules[parts[0].strip()] = parts[1].strip()
-        
-        return rules
+                return {parts[0].strip(): parts[1].strip()}
+        elif hasattr(rule_text, 'rules'):
+            return rule_text.rules
+        return {}
 
     def draw_l_system(self, canvas, l_system_string: str, angle: float, start_x: float, start_y: float, 
                      length: float, start_angle: float = 0, radians: bool = False):
