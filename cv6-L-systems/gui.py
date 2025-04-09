@@ -77,49 +77,49 @@ class GUI:
         self.line_length.pack(pady=(0, 20))
 
     def draw_saved_component(self):
-        self.btn_draw_fst = tk.Button(self.frame_start_controls, text="Draw 1st",bg="lightgreen", 
-                                      command=lambda: self.controller.draw_preset(self.canvas, 
-                                                                                    first,
-                                                                                    float(self.ib_pos_x.get("1.0", tk.END).strip()), 
-                                                                                    float(self.ib_pos_y.get("1.0", tk.END).strip()), 
-                                                                                    float(self.line_length.get("1.0", tk.END).strip()), 
-                                                                                    int(self.nesting_num.get("1.0", tk.END).strip()),
-                                                                                    float(self.ib_start_angle.get("1.0", tk.END).strip()), 
-                                                                                    False))
+        self.btn_draw_fst = tk.Button(self.frame_start_controls, text="Draw 1st", bg="lightgreen", 
+                                  command=lambda: self.controller.draw_preset(self.canvas, 
+                                                                             first,
+                                                                             self.ib_pos_x.get("1.0", tk.END).strip(), 
+                                                                             self.ib_pos_y.get("1.0", tk.END).strip(), 
+                                                                             self.line_length.get("1.0", tk.END).strip(), 
+                                                                             self.nesting_num.get("1.0", tk.END).strip(),
+                                                                             self.ib_start_angle.get("1.0", tk.END).strip(), 
+                                                                             False))
         self.btn_draw_fst.pack(pady=5, fill=tk.X)
 
-        self.btn_draw_snd = tk.Button(self.frame_start_controls, text="Draw 2nd",bg="lightgreen",
-                                      command=lambda: self.controller.draw_preset(self.canvas, 
-                                                                                    second,
-                                                                                    float(self.ib_pos_x.get("1.0", tk.END).strip()), 
-                                                                                    float(self.ib_pos_y.get("1.0", tk.END).strip()), 
-                                                                                    float(self.line_length.get("1.0", tk.END).strip()), 
-                                                                                    int(self.nesting_num.get("1.0", tk.END).strip()),
-                                                                                    float(self.ib_start_angle.get("1.0", tk.END).strip()), 
-                                                                                    False))
-        self.btn_draw_snd.pack(pady=5, fill=tk.X)
+        self.btn_draw_fst = tk.Button(self.frame_start_controls, text="Draw 2nd", bg="lightgreen", 
+                                  command=lambda: self.controller.draw_preset(self.canvas, 
+                                                                             second,
+                                                                             self.ib_pos_x.get("1.0", tk.END).strip(), 
+                                                                             self.ib_pos_y.get("1.0", tk.END).strip(), 
+                                                                             self.line_length.get("1.0", tk.END).strip(), 
+                                                                             self.nesting_num.get("1.0", tk.END).strip(),
+                                                                             self.ib_start_angle.get("1.0", tk.END).strip(), 
+                                                                             False))
+        self.btn_draw_fst.pack(pady=5, fill=tk.X)
 
-        self.btn_draw_thrd = tk.Button(self.frame_start_controls, text="Draw 3rd",bg="lightgreen",
-                                       command=lambda: self.controller.draw_preset(self.canvas, 
-                                                                                    third,
-                                                                                    float(self.ib_pos_x.get("1.0", tk.END).strip()), 
-                                                                                    float(self.ib_pos_y.get("1.0", tk.END).strip()), 
-                                                                                    float(self.line_length.get("1.0", tk.END).strip()), 
-                                                                                    int(self.nesting_num.get("1.0", tk.END).strip()),
-                                                                                    float(self.ib_start_angle.get("1.0", tk.END).strip()), 
-                                                                                    True))
-        self.btn_draw_thrd.pack(pady=5, fill=tk.X)
+        self.btn_draw_fst = tk.Button(self.frame_start_controls, text="Draw 3rd", bg="lightgreen", 
+                                  command=lambda: self.controller.draw_preset(self.canvas, 
+                                                                             third,
+                                                                             self.ib_pos_x.get("1.0", tk.END).strip(), 
+                                                                             self.ib_pos_y.get("1.0", tk.END).strip(), 
+                                                                             self.line_length.get("1.0", tk.END).strip(), 
+                                                                             self.nesting_num.get("1.0", tk.END).strip(),
+                                                                             self.ib_start_angle.get("1.0", tk.END).strip(), 
+                                                                             True))
+        self.btn_draw_fst.pack(pady=5, fill=tk.X)
 
-        self.btn_draw_frth = tk.Button(self.frame_start_controls, text="Draw 4th",bg="lightgreen",
-                                       command=lambda: self.controller.draw_preset(self.canvas, 
-                                                                                    forth,
-                                                                                    float(self.ib_pos_x.get("1.0", tk.END).strip()), 
-                                                                                    float(self.ib_pos_y.get("1.0", tk.END).strip()), 
-                                                                                    float(self.line_length.get("1.0", tk.END).strip()), 
-                                                                                    int(self.nesting_num.get("1.0", tk.END).strip()),
-                                                                                    float(self.ib_start_angle.get("1.0", tk.END).strip()), 
-                                                                                    True))
-        self.btn_draw_frth.pack(pady=5, fill=tk.X)
+        self.btn_draw_fst = tk.Button(self.frame_start_controls, text="Draw 4th", bg="lightgreen", 
+                                  command=lambda: self.controller.draw_preset(self.canvas, 
+                                                                             forth,
+                                                                             self.ib_pos_x.get("1.0", tk.END).strip(), 
+                                                                             self.ib_pos_y.get("1.0", tk.END).strip(), 
+                                                                             self.line_length.get("1.0", tk.END).strip(), 
+                                                                             self.nesting_num.get("1.0", tk.END).strip(),
+                                                                             self.ib_start_angle.get("1.0", tk.END).strip(), 
+                                                                             True))
+        self.btn_draw_fst.pack(pady=5, fill=tk.X)
     
     def custom_component(self):
         self.frame_custom = tk.Frame(self.frame_right, border=1, relief=tk.SUNKEN)
@@ -127,11 +127,11 @@ class GUI:
 
         tk.Label(self.frame_custom, text="Custom L-System:", font=("Arial", 14, "bold")).pack(pady=5)
 
-        tk.Label(self.frame_custom, text="Axiom").pack(pady=5)
+        tk.Label(self.frame_custom, text="Axiom (F+F+F)").pack(pady=5)
         self.ib_axiom = tk.Text(self.frame_custom, height=1, width=10)
         self.ib_axiom.pack(pady=(0, 20))
 
-        tk.Label(self.frame_custom, text="Rule").pack(pady=5)
+        tk.Label(self.frame_custom, text="Rule (F->F-F)").pack(pady=5)
         self.ib_rule = tk.Text(self.frame_custom, height=1, width=10)
         self.ib_rule.pack(pady=(0, 20))
 
@@ -140,17 +140,16 @@ class GUI:
         self.ib_custome_angle.pack(pady=(0, 20))
 
         self.btn_draw_custom = tk.Button(self.frame_custom, text="Draw custom", bg="lightgreen", 
-                                         command=lambda: self.controller.draw_custom(self.ib_axiom.get("1.0", tk.END).strip(), 
-                                                                                     self.ib_rule.get("1.0", tk.END).strip(), 
-                                                                                     self.ib_custome_angle.get("1.0", tk.END).strip(),
-                                                                                     self.canvas,
-                                                                                     float(self.ib_pos_x.get("1.0", tk.END).strip()),
-                                                                                     float(self.ib_pos_y.get("1.0", tk.END).strip()),
-                                                                                     float(self.line_length.get("1.0", tk.END).strip()),
-                                                                                     int(self.nesting_num.get("1.0", tk.END).strip()),
-                                                                                     float(self.ib_start_angle.get("1.0", tk.END).strip()),
-                                                                                     self.radians),
-                                                                                     )
+                                     command=lambda: self.controller.draw_custom(self.ib_axiom.get("1.0", tk.END).strip(), 
+                                                                                 self.ib_rule.get("1.0", tk.END).strip(), 
+                                                                                 self.ib_custome_angle.get("1.0", tk.END).strip(),
+                                                                                 self.canvas,
+                                                                                 self.ib_pos_x.get("1.0", tk.END).strip(),
+                                                                                 self.ib_pos_y.get("1.0", tk.END).strip(),
+                                                                                 self.line_length.get("1.0", tk.END).strip(),
+                                                                                 self.nesting_num.get("1.0", tk.END).strip(),
+                                                                                 self.ib_start_angle.get("1.0", tk.END).strip(),
+                                                                                 self.radians))
         
         self.btn_draw_custom.pack(pady=5, fill=tk.X)
 

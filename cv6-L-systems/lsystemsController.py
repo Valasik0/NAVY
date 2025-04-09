@@ -1,6 +1,6 @@
 import math
 from LSystem import LSystem
-
+from tkinter import messagebox
 
 class LSystemsController:
     def __init__(self):
@@ -18,7 +18,7 @@ class LSystemsController:
             return rule_text.rules
         return {}
 
-    def draw_l_system(self, canvas, l_system_string: str, angle: float, start_x: float, start_y: float, 
+    def draw_l_system_string(self, canvas, l_system_string: str, angle: float, start_x: float, start_y: float, 
                      length: float, start_angle: float = 0, radians: bool = False):
         x, y = start_x, start_y
         current_angle = start_angle
@@ -51,26 +51,34 @@ class LSystemsController:
                 x, y, current_angle = stack.pop()
 
 
-    def draw_custom(self, axiom: str, rule_text: str, angle_text: str, canvas, 
-                   start_x: float = 50, start_y: float = 50, length: float = 5, 
-                   iterations: int = 3, start_angle: float = 0, radians: bool = False):
+    def draw_preset(self, canvas, l_system, start_x_str, start_y_str, length_str, iterations_str, start_angle_str, radians=False):
+        try:
+            start_x = float(start_x_str) if start_x_str else 50
+            start_y = float(start_y_str) if start_y_str else 50
+            length = float(length_str) if length_str else 5
+            iterations = int(iterations_str) if iterations_str else 3
+            start_angle = float(start_angle_str) if start_angle_str else 0
 
-        angle = float(angle_text)
-        
-        rules = self.parse_rule(rule_text)
-        
-        self.lsystem = LSystem(axiom, rules, angle)
-        l_system_string = self.lsystem.generate(iterations)
+            self.lsystem = l_system
+            l_system_string = self.lsystem.generate(iterations)
+            self.clear_canvas(canvas)
+            self.draw_l_system_string(canvas, l_system_string, l_system.angle, start_x, start_y, length, start_angle, radians)
+        except ValueError as e:
+            messagebox.showerror("Chyba", f"Neplatný vstup: {str(e)}")
 
-        self.clear_canvas(canvas)
-
-        self.draw_l_system(canvas, l_system_string, angle, start_x, start_y, length, start_angle, radians)
-    
-    def draw_preset(self, canvas, l_system: LSystem, start_x: float = 50, start_y: float = 50, 
-                    length: float = 5, iterations: int = 3, start_angle: float = 0, radians: bool = False):
-        self.lsystem = l_system
-        l_system_string = self.lsystem.generate(iterations)
-
-        self.clear_canvas(canvas)
-
-        self.draw_l_system(canvas, l_system_string, l_system.angle, start_x, start_y, length, start_angle, radians)
+    def draw_custom(self, axiom, rule_text, angle_text, canvas, start_x_str, start_y_str, length_str, iterations_str, start_angle_str, radians=False):
+        try:
+            start_x = float(start_x_str) if start_x_str else 50
+            start_y = float(start_y_str) if start_y_str else 50
+            length = float(length_str) if length_str else 5
+            iterations = int(iterations_str) if iterations_str else 3
+            start_angle = float(start_angle_str) if start_angle_str else 0
+            angle = float(angle_text) if angle_text else 90
+            
+            rules = self.parse_rule(rule_text)
+            self.lsystem = LSystem(axiom, rules, angle)
+            l_system_string = self.lsystem.generate(iterations)
+            self.clear_canvas(canvas)
+            self.draw_l_system_string(canvas, l_system_string, angle, start_x, start_y, length, start_angle, radians)
+        except ValueError as e:
+            messagebox.showerror("Chyba", f"Neplatný vstup: {str(e)}")
