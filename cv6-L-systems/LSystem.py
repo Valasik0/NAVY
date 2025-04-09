@@ -1,5 +1,5 @@
 class LSystem:
-    def __init__(self, axiom: str, rules: dict, angle: int):
+    def __init__(self, axiom: str, rules: dict, angle: str):
         self.axiom = axiom
         self.rules = rules
         self.angle = angle
