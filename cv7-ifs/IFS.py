@@ -5,7 +5,7 @@ class IFS:
     def __init__(self, iterations, model, point = [0,0,0]):
         self.point = point
         self.iterations = iterations
-        self.points = [point]
+        self.points = [point] #historie bodu pro vizualizaci
         self.model = model
     
     def transform(self):
@@ -36,7 +36,7 @@ class IFS:
         z = [point[2] for point in self.points]
 
         fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
+        ax = fig.add_subplot(projection='3d')
         ax.scatter(x, y, z, c='black', marker='o')
         ax.set_xlabel('X')
         ax.set_ylabel('Y')
