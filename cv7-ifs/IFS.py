@@ -1,9 +1,8 @@
 import random
 import matplotlib.pyplot as plt
-import numpy as np
 
 class IFS:
-    def __init__(self, iterations, model, point = (0,0,0)):
+    def __init__(self, iterations, model, point = [0,0,0]):
         self.point = point
         self.iterations = iterations
         self.points = [point]
@@ -18,13 +17,18 @@ class IFS:
             g, h, i = self.model[trasformation]["g"], self.model[trasformation]["h"], self.model[trasformation]["i"]
             j, k, l = self.model[trasformation]["j"], self.model[trasformation]["k"], self.model[trasformation]["l"] 
 
+            new_point = [0, 0, 0]
+
             #transformace bodu podle vybrane transformace
-            self.point[0] = a*self.point[0] + b*self.point[1] + c*self.point[2] + j
-            self.point[1] = d*self.point[0] + e*self.point[1] + f*self.point[2] + k
-            self.point[2] = g*self.point[0] + h*self.point[1] + i*self.point[2] + l
+            new_point[0] = a*self.point[0] + b*self.point[1] + c*self.point[2] + j
+            new_point[1] = d*self.point[0] + e*self.point[1] + f*self.point[2] + k
+            new_point[2] = g*self.point[0] + h*self.point[1] + i*self.point[2] + l
+
+            self.point = new_point
 
             #pridani noveho bodu do seznamu bodu
-            self.points.append(self.point)
+            self.points.append(new_point)
+            print(self.point)
 
     def vizualize(self):
         x = [point[0] for point in self.points]
@@ -33,10 +37,10 @@ class IFS:
 
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
-        ax.scatter(x, y, z, c='b', marker='o')
-        ax.set_xlabel('X Label')
-        ax.set_ylabel('Y Label')
-        ax.set_zlabel('Z Label')
+        ax.scatter(x, y, z, c='black', marker='o')
+        ax.set_xlabel('X')
+        ax.set_ylabel('Y')
+        ax.set_zlabel('Z')
         plt.show()
 
     
