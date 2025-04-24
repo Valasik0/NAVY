@@ -28,23 +28,16 @@ def mandelbrot_set(x0, y0, width, height, n, m):
 
     return Z
 
-def plot_mandelbrot(Z, x0, y0):
-    plt.imshow(Z, extent=(x0[0], x0[1], y0[0], y0[1]), cmap='hot')
-    plt.colorbar()
-    plt.title("Mandelbrot")
-    plt.xlabel("x")
-    plt.ylabel("y")
-    plt.show()
-
 def interactive_zoom(x0, y0, width, height, n, m):
     fig, ax = plt.subplots()
     Z = mandelbrot_set(x0, y0, width, height, n, m)
-    img = ax.imshow(Z, extent=(x0[0], x0[1], y0[0], y0[1]), cmap='hot')
+    img = ax.imshow(Z, extent=(x0[0], x0[1], y0[0], y0[1]), cmap='BuPu', origin='lower')
     plt.colorbar(img)
 
-    def on_click(event, x0=x0, y0=y0):
+    def on_click(event):
+        nonlocal x0, y0
         if event.button == 1:  # Levé tlačítko myši
-            zoom_factor = 0.1  # Faktor přiblížení
+            zoom_factor = 0.5  # Faktor přiblížení
             x_range = x0[1] - x0[0]
             y_range = y0[1] - y0[0]
             x_center = event.xdata
@@ -66,7 +59,7 @@ def interactive_zoom(x0, y0, width, height, n, m):
     plt.show()
 
 if __name__ == "__main__":
-    width, height = 300, 300
+    width, height = 250, 250
     
     x = 0.0
     y = 0.0
