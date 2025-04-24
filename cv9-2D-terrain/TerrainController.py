@@ -22,26 +22,25 @@ class TerrainController:
         for _ in range(iterations):
             new_points = []
             for i in range(len(points) - 1):
-                # Get the start and end points of the current segment
+                #get the start and end points of the current segment
                 x1, y1 = points[i]
                 x2, y2 = points[i + 1]
 
-                # Calculate the midpoint
+                #calculate the midpoint
                 mid_x = (x1 + x2) / 2
                 mid_y = (y1 + y2) / 2
 
-                # Add random displacement to the midpoint
+                #add random displacement to the midpoint
                 displacement = random.uniform(-offset_num, offset_num)
                 mid_y += displacement
 
-                # Add the new points to the list
+                #add the new points to the list
                 new_points.append((x1, y1))
                 new_points.append((mid_x, mid_y))
 
-            new_points.append(points[-1])  # Add the last point
+            new_points.append(points[-1])  #add the last point
             points = new_points
 
-        # Draw the terrain on the canvas
         self.draw_on_canvas(points, color, canvas)
         
     def validate_numeric_input(self, input_value):
@@ -52,11 +51,14 @@ class TerrainController:
             return None
         
     def draw_on_canvas(self, points, color, canvas):
-        for i in range(len(points) - 1):
-            x1, y1 = points[i]
-            x2, y2 = points[i + 1]
-            canvas.create_line(x1, y1, x2, y2, fill=color, width=1)
+        canvas_height = int(canvas['height']) 
+        filled_points = points + [(points[-1][0], canvas_height), (points[0][0], canvas_height)]
+
+        canvas.create_polygon(
+            *[coord for point in filled_points for coord in point],
+            fill=color,
+            outline=color 
+        )
 
     def clear_canvas(self, canvas):
         canvas.delete("all")
-        
