@@ -49,7 +49,8 @@ class TerrainController:
             return value
         except ValueError:
             return None
-        
+
+    #draw polygon under the curve to enhance the terrain look
     def draw_on_canvas(self, points, color, canvas):
         canvas_height = int(canvas['height']) 
         filled_points = points + [(points[-1][0], canvas_height), (points[0][0], canvas_height)]
