@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import colorchooser
+from TerrainController import TerrainController
 
 class GUI:
     def __init__(self):
@@ -19,6 +20,7 @@ class GUI:
         self.textbox_line_length = None
         self.textbox_offset_num = None
         self.textbox_iterations = None
+        self.controller = TerrainController()
 
     
     def run(self):
@@ -61,5 +63,12 @@ class GUI:
         self.button_pick_color.pack(pady=5, padx=5)
         self.button_clear = tk.Button(self.frame_right, text="Clear", bg="pink", command=self.canvas.delete("all"))
         self.button_clear.pack(pady=5, padx=10)   
-        self.button_draw = tk.Button(self.frame_right, text="Draw", font=("Arial", 16, "bold"), bg="lightblue")
+        self.button_draw = tk.Button(self.frame_right, text="Draw", font=("Arial", 16, "bold"), bg="lightblue"
+                                     , command=lambda: self.controller.draw_terrain(
+                                         self.textbox_start_x.get("1.0", tk.END).strip(),
+                                         self.textbox_start_y.get("1.0", tk.END).strip(),
+                                         self.textbox_iterations.get("1.0", tk.END).strip(),
+                                         self.textbox_line_length.get("1.0", tk.END).strip(),
+                                         self.textbox_offset_num.get("1.0", tk.END).strip(),
+                                         self.color))
         self.button_draw.pack(pady=5, padx=10)
