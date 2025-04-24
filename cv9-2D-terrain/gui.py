@@ -61,10 +61,11 @@ class GUI:
 
 
         self.button_pick_color.pack(pady=5, padx=5)
-        self.button_clear = tk.Button(self.frame_right, text="Clear", bg="pink", command=self.canvas.delete("all"))
+        self.button_clear = tk.Button(self.frame_right, text="Clear", bg="pink", command=lambda: self.controller.clear_canvas(self.canvas))
         self.button_clear.pack(pady=5, padx=10)   
         self.button_draw = tk.Button(self.frame_right, text="Draw", font=("Arial", 16, "bold"), bg="lightblue"
                                      , command=lambda: self.controller.draw_terrain(
+                                         self.canvas,
                                          self.textbox_start_x.get("1.0", tk.END).strip(),
                                          self.textbox_start_y.get("1.0", tk.END).strip(),
                                          self.textbox_iterations.get("1.0", tk.END).strip(),
