@@ -73,4 +73,3 @@ if __name__ == "__main__":
     m = 2
 
     interactive_zoom(x0, y0, width, height, n, m)
-

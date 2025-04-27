@@ -17,7 +17,8 @@ class GUI:
         self.color = None
         self.textbox_start_x = None
         self.textbox_start_y = None
-        self.textbox_line_length = None
+        self.textbox_x_end = None
+        self.textbox_y_end = None
         self.textbox_offset_num = None
         self.textbox_iterations = None
         self.controller = TerrainController()
@@ -52,9 +53,12 @@ class GUI:
         tk.Label(self.frame_right, text="Iterations:").pack(pady=5, padx=10)
         self.textbox_iterations = tk.Text(self.frame_right, height=1, width=10)
         self.textbox_iterations.pack(pady=(0, 20), padx=10)
-        tk.Label(self.frame_right, text="Line Length:").pack(pady=5, padx=10)
-        self.textbox_line_length = tk.Text(self.frame_right, height=1, width=10)
-        self.textbox_line_length.pack(pady=(0, 20), padx=10)
+        tk.Label(self.frame_right, text="X End Position:").pack(pady=5, padx=10)
+        self.textbox_x_end = tk.Text(self.frame_right, height=1, width=10)
+        self.textbox_x_end.pack(pady=(0, 20), padx=10)
+        tk.Label(self.frame_right, text="Y End Position:").pack(pady=5, padx=10)
+        self.textbox_y_end = tk.Text(self.frame_right, height=1, width=10)
+        self.textbox_y_end.pack(pady=(0, 20), padx=10)
         tk.Label(self.frame_right, text="Offset Number:").pack(pady=5, padx=10)
         self.textbox_offset_num = tk.Text(self.frame_right, height=1, width=10)
         self.textbox_offset_num.pack(pady=(0, 20), padx=10)
@@ -69,7 +73,8 @@ class GUI:
                                          self.textbox_start_x.get("1.0", tk.END).strip(),
                                          self.textbox_start_y.get("1.0", tk.END).strip(),
                                          self.textbox_iterations.get("1.0", tk.END).strip(),
-                                         self.textbox_line_length.get("1.0", tk.END).strip(),
+                                         self.textbox_x_end.get("1.0", tk.END).strip(),
+                                         self.textbox_y_end.get("1.0", tk.END).strip(),
                                          self.textbox_offset_num.get("1.0", tk.END).strip(),
                                          self.color))
         self.button_draw.pack(pady=5, padx=10)
