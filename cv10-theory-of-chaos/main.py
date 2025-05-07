@@ -35,16 +35,14 @@ plt.show()
 
 X_train, y_train = generate_data(num_samples=100000, iterations=100)
 
-# 2. Trénink neuronové sítě pomocí tensorflow.keras
 model = Sequential([
     Dense(64, activation='relu', input_shape=(2,)),
     Dense(64, activation='relu'),
     Dense(1, activation='linear')
 ])
 model.compile(optimizer='adam', loss='mse')
-model.fit(X_train, y_train, epochs=20, batch_size=256, verbose=1)
+model.fit(X_train, y_train, epochs=30, batch_size=32, verbose=1)
 
-# 3. Predikce a vykreslení bifurkačního diagramu
 a_values = np.linspace(0, 4, 10000)
 x_actual = 1e-5 * np.ones(len(a_values))
 x_predicted = 1e-5 * np.ones(len(a_values))
@@ -53,16 +51,14 @@ n_iterations = 1000
 
 plt.figure(figsize=(12, 7))
 for i in range(n_iterations):
-    # Actual bifurcation diagram
     x_actual = logistic_map(a_values, x_actual)
     if i >= (n_iterations - last):
-        plt.plot(a_values, x_actual, ',k', alpha=0.25, label="Actual" if i == (n_iterations - last) else "")
+        plt.plot(a_values, x_actual, ',k', alpha=1.0, label="Actual" if i == (n_iterations - last) else "")
 
-    # Predicted bifurcation diagram
     X_pred = np.vstack((a_values, x_predicted)).T
     x_predicted = model.predict(X_pred, batch_size=256).flatten()
     if i >= (n_iterations - last):
-        plt.plot(a_values, x_predicted, ',r', alpha=0.25, label="Predicted" if i == (n_iterations - last) else "")
+        plt.plot(a_values, x_predicted, ',r', alpha=1.0, label="Predicted" if i == (n_iterations - last) else "")
 
 plt.title("Bifurcation Diagram with Predictions")
 plt.xlabel("Parameter (a)")
