@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from matplotlib.colors import ListedColormap
 
 size = 100 
 p = 0.05   
@@ -33,7 +34,7 @@ def step(forest):
                 new_forest[i, j] = BURNT
     return new_forest
 
-cmap = plt.cm.get_cmap('YlGnBu', 4)
+cmap = ListedColormap(['brown', 'green', 'orange', 'black'])
 fig, ax = plt.subplots()
 im = ax.imshow(forest, cmap=cmap, vmin=0, vmax=3)
 
